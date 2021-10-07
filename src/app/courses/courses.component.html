@@ -10,14 +10,14 @@
 
                 <!-- COURSES LIST -->
 
-                <mat-list dense>
+                <mat-list>
                     <mat-list-item *ngFor="let course of courses" (click)="selectCourse(course)">
-                        <h3 matLine>
+                        <h2 matLine>
                             {{course.title}}
-                        </h3>
-                        <p matLine>
+                        </h2>
+                        <h3 matLine>
                             {{course.description}}
-                        </p>
+                        </h3>
                         <button mat-icon-button color="warn"
                             (click)="deleteCourse(course.id);$event.stopImmediatePropagation()">
                             <mat-icon>delete</mat-icon>
@@ -36,7 +36,7 @@
                     <ng-template #noSelection>Select Course</ng-template>
                 </mat-card-title>
             </mat-card-header>
-            <form #form="ngForm" (submit)="saveCourse()">
+            <form #form="ngForm" (submit)="saveCourse(selectedCourse)">
                 <mat-card-content>
                     <mat-form-field>
                         <input 
