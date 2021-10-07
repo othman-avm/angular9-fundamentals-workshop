@@ -5,8 +5,6 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-
-
     <mat-list dense>
       <mat-list-item *ngFor="let lesson of courseLessons" (click)="selectLesson(lesson)">
         <h3>
@@ -22,8 +20,9 @@
     <mat-card-title>Debug</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <span *ngIf="currentLesson">
-      {{currentLesson | json}}
+    <span *ngIf="currentLesson; else elseBlock">
+      {{currentLesson.title}}
     </span>
+    <ng-template #elseBlock>Select a lesson</ng-template>
   </mat-card-content>
 </mat-card>
