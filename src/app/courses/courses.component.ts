@@ -8,8 +8,6 @@ import { CoursesService } from '../shared/services/courses/courses.service';
 })
 export class CoursesComponent implements OnInit
 {
-
-
   selectedCourse = null
 
   courses = null;
@@ -18,11 +16,8 @@ export class CoursesComponent implements OnInit
 
   ngOnInit(): void
   {
-    this.resetSelectedCourse();
-    this.courses = this.coursesService.all();
+    this.refreshCourses();
   }
-
-
   resetSelectedCourse()
   {
     const emptyCourse =
@@ -37,6 +32,19 @@ export class CoursesComponent implements OnInit
     this.selectedCourse = emptyCourse;
   }
 
+
+
+  loadCourses()
+  {
+    this.coursesService.all().subscribe(courses => this.courses = courses);
+  }
+
+  refreshCourses()
+  {
+    this.resetSelectedCourse();
+    this.loadCourses();
+  }
+
   /** 
    * Evene handler 
    * Selects the course
@@ -49,7 +57,7 @@ export class CoursesComponent implements OnInit
 
   deleteCourse(courseId)
   {
-    this.coursesService.delete(courseId);
+    this.coursesService.delete(courseId).subscribe(() => this.refreshCourses());
   }
 
   cancel()
@@ -61,10 +69,10 @@ export class CoursesComponent implements OnInit
   {
     if(course.id)
     {
-      this.coursesService.update(course)
+      this.coursesService.update(course).subscribe(() => this.refreshCourses())
       return;
     }
-    this.coursesService.create(course)
+    this.coursesService.create(course).subscribe(() => this.refreshCourses())
   }
 
 }
