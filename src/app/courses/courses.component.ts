@@ -5,7 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit
+{
+
+
+  selectedCourse = null
+
   courses = [
     {
       id: 1,
@@ -13,12 +18,36 @@ export class CoursesComponent implements OnInit {
       description: 'Learn the fundamentals of Angular 9',
       percentComplete: 26,
       favorite: true
+    },
+    {
+      id: 2,
+      title: "JavaScript The hard parts",
+      description: "Things you might not know",
+      percentComplete: 50,
+      favorite: true
     }
   ];
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
+  }
+
+
+  /** 
+   * Evene handler 
+   * Selects the course
+  */
+
+  selectCourse(course)
+  {
+    this.selectedCourse = course;
+  }
+
+  deleteCourse(courseId)
+  {
+    console.log("COURSE DELETED!", courseId)
   }
 
 }
