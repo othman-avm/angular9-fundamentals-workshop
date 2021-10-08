@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { CoursesService } from '../shared/services/courses/courses.service';
 
 @Component({
@@ -12,10 +13,12 @@ export class CoursesComponent implements OnInit
 
   courses = null;
 
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService,
+    private titleService: Title) { }
 
   ngOnInit(): void
   {
+    this.setPageTitle()
     this.refreshCourses();
   }
   resetSelectedCourse()
@@ -32,7 +35,10 @@ export class CoursesComponent implements OnInit
     this.selectedCourse = emptyCourse;
   }
 
-
+  setPageTitle()
+  {
+    this.titleService.setTitle("Courses");
+  }
 
   loadCourses()
   {
@@ -67,7 +73,7 @@ export class CoursesComponent implements OnInit
 
   saveCourse(course)
   {
-    if(course.id)
+    if (course.id)
     {
       this.coursesService.update(course).subscribe(() => this.refreshCourses())
       return;
