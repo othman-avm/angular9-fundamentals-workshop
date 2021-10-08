@@ -10,6 +10,7 @@ export class LessonsListComponent
 
 
   @Input() lessons;
+  @Input() currentLesson;
 
   @Output() selected = new EventEmitter();
 

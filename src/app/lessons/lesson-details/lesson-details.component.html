@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Lessons Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <h2>
+            <span *ngIf="currentLesson; else elseBlock">
+                {{currentLesson.title}}
+            </span>
+            <ng-template #elseBlock>Select a lesson</ng-template>
+        </h2>
+    </mat-card-content>
+</mat-card>

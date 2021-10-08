@@ -1,5 +1,6 @@
-<app-lessons-list [lessons]="courseLessons" (selected)="selectLesson($event)">
+<app-lessons-list [lessons]="courseLessons" (selected)="selectLesson($event)" [currentLesson]="currentLesson">
 
 </app-lessons-list>
+<app-lesson-details [currentLesson]="currentLesson">
 
-<pre>{{currentLesson | json}}</pre>
+</app-lesson-details>
