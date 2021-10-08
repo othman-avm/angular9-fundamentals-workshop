@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,5 +14,10 @@ export class AppComponent
     { path: '/courses', icon: 'view_list', title: 'Courses' },
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  logout()
+  {
+    this.router.navigateByUrl('/login');
+  }
 }
