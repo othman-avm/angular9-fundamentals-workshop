@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit
 
   selectLesson(lesson)
   {
-    console.log("What up fool!", lesson)
+    //console.log("What up fool!", lesson)
     this.currentLesson = lesson;
   }
 }
